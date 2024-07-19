@@ -47,6 +47,10 @@ header .logo {
   letter-spacing: 1px;
 }
 
+header .navigation {
+  display: flex;
+}
+
 header .navigation a {
   color: #000;
   font-size: 18px;
@@ -118,7 +122,7 @@ header .navigation a:hover {
 /* Content Styles */
 .content {
   max-width: 650px;
-  margin: 60px 100px;
+  margin: 60px auto;
 }
 
 .content .info h2 {
@@ -208,6 +212,10 @@ header .navigation a:hover {
 
 /* Responsive CSS */
 @media (max-width: 960px) {
+  header {
+    padding: 20px;
+  }
+
   header .navigation {
     display: none;
   }
@@ -261,5 +269,22 @@ header .navigation a:hover {
   .content .info h2 span {
     font-size: 30px;
     font-weight: 600;
+  }
+
+  .box {
+    width: 90%;
+    padding: 20px;
+    margin-top: 10%;
+  }
+
+  .profile-img {
+    width: 150px;
+    height: 150px;
+  }
+
+  .social-icons a {
+    width: 40px;
+    height: 40px;
+    font-size: 20px;
   }
 }
