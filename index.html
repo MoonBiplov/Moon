@@ -126,6 +126,17 @@
             margin-bottom: 40px;
         }
 
+        /* Settings Icon */
+        .settings-icon {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            font-size: 30px;
+            color: #00ffff;
+            cursor: pointer;
+            z-index: 2; /* Ensure it's above other content */
+        }
+
         /* Responsive CSS */
         @media (max-width: 960px) {
             header {
@@ -176,6 +187,17 @@
             <a class="facebook" href="https://www.facebook.com/biplov.devkota.9"><i class="fab fa-facebook-f"></i></a>
             <a class="youtube" href="https://www.youtube.com/@moonxd07"><i class="fab fa-youtube"></i></a>
         </div>
+        <!-- Settings Icon -->
+        <div class="settings-icon" onclick="openDesktopView()">
+            <i class="fas fa-cog"></i>
+        </div>
     </section>
+
+    <script>
+        function openDesktopView() {
+            // Opens the site in a new window with desktop dimensions
+            window.open(window.location.href, '_blank', 'width=1024,height=768');
+        }
+    </script>
 </body>
 </html>
