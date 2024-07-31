@@ -1,10 +1,14 @@
+
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
+<html lang="en">
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, maximum-scale=1.0, minimum-scale=1.0">
-    <title>Texturepack</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Texturepack Slider</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800;900&display=swap');
 
@@ -79,21 +83,125 @@
             background: #fff;
         }
 
-        /* Content Styles */
-        .content {
-            text-align: center;
-            color: white;
+        /* Slider and Content Styles */
+        .container {
+            display: flex;
+            justify-content: space-between; /* Align children to left and right */
+            align-items: center;
+            padding: 20px; /* Add padding to prevent content from touching edges */
+            position: relative;
         }
 
-        .content h2 {
+        .slider {
+            width: 600px; /* Adjusted size */
+            height: 350px; /* Adjusted size */
+            position: relative;
+            overflow: hidden;
+            border-radius: 20px; /* Curved borders */
+            box-shadow: 0 0 10px rgba(0, 255, 255, 0.5);
+            cursor: pointer; /* Add cursor pointer to indicate interactivity */
+        }
+
+        .slider .list {
+            display: flex;
+            height: 100%;
+            transition: transform 1s ease-in-out;
+        }
+
+        .slider .list .item {
+            flex: 0 0 100%; /* Ensure each item takes up the full width of the slider */
+            height: 100%; /* Full height of the slider */
+            overflow: hidden;
+        }
+
+        .slider .list img {
+            width: 100%;
+            height: 100%; /* Full height to match slider */
+            object-fit: cover; /* Ensure image covers the slider area without distortion */
+            border-radius: 20px; /* Curved borders */
+        }
+
+        .slider .buttons {
+            position: absolute;
+            top: 50%;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            transform: translateY(-50%);
+            padding: 0 10px;
+        }
+
+        .slider .buttons button {
+            width: 40px; /* Adjusted size */
+            height: 40px; /* Adjusted size */
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.5);
+            color: #fff;
+            border: none;
+            font-family: monospace;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .slider .buttons button:hover {
+            background-color: rgba(255, 255, 255, 0.7);
+        }
+
+        .slider .dots {
+            position: absolute;
+            bottom: 10px;
+            left: 0;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            padding: 0;
+            margin: 0;
+        }
+
+        .slider .dots li {
+            list-style: none;
+            width: 10px;
+            height: 10px;
+            background-color: #fff;
+            margin: 0 5px;
+            border-radius: 50%;
+            transition: width 0.5s;
+        }
+
+        .slider .dots li.active {
+            width: 20px;
+        }
+
+        @media screen and (max-width: 768px) {
+            .slider {
+                width: 90%;
+                height: 250px;
+            }
+
+            .info {
+                max-width: 100%;
+                margin-right: 0; /* Remove margin on smaller screens */
+            }
+        }
+
+        /* Content Styles */
+        .info {
+            color: white;
+            text-align: left; /* Align text to the left */
+            max-width: 300px;
+            margin-right: 20px; /* Add margin to the right */
+        }
+
+        .info h2 {
             color: #0ff;
-            font-size: 36px;
+            font-size: 24px;
             text-shadow: 0 0 5px #0ff, 0 0 10px #0ff, 0 0 15px #0ff, 0 0 20px #0ff, 0 0 25px #0ff;
             margin-bottom: 20px;
         }
 
-        .content p {
-            font-size: 18px;
+        .info p {
+            font-size: 16px;
             line-height: 1.6;
             font-weight: 500;
             color: #fff;
@@ -106,7 +214,7 @@
             left: 50%;
             transform: translateX(-50%);
             display: flex;
-            gap: 20px;
+            gap: 10px; /* Reduced gap between icons */
         }
 
         .media-icons a {
@@ -184,13 +292,33 @@
                 <i class="fas fa-times close-btn"></i>
             </label>
         </header>
-        <div class="content">
+        <div class="container">
             <div class="info">
                 <h2>Texturepack for PvP (1.20.1)</h2>
                 <p>
-                    ➡️<a class="minecraft" href="https://www.mediafire.com/file/iepfvmva15kwzuv/Moon.zip/file"><i class="fa-solid fa-download"></i></a>⬅️
+                    <a class="minecraft" href="https://www.mediafire.com/file/a2peaf2axque6ex/Moon.zip/file"><i class="fa-solid fa-download"></i></a>
                     Made by-MoonBiplov😁
                 </p>
+            </div>
+            <div class="slider">
+                <div class="list">
+                    <div class="item"><img src="01.jpg" alt="Slide 1"></div>
+                    <div class="item"><img src="02.jpg" alt="Slide 2"></div>
+                    <div class="item"><img src="03.jpg" alt="Slide 3"></div>
+                    <div class="item"><img src="04.jpg" alt="Slide 4"></div>
+                    <div class="item"><img src="05.jpg" alt="Slide 5"></div>
+                </div>
+                <div class="buttons">
+                    <button id="prev">&lt;</button>
+                    <button id="next">&gt;</button>
+                </div>
+                <ul class="dots">
+                    <li class="active"></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                </ul>
             </div>
         </div>
         <div class="media-icons">
@@ -198,5 +326,55 @@
             <a class="youtube" href="https://www.youtube.com/@moonxd07"><i class="fab fa-youtube"></i></a>
         </div>
     </section>
+
+    <script>
+        let slider = document.querySelector('.slider');
+        let sliderList = document.querySelector('.slider .list');
+        let items = document.querySelectorAll('.slider .list .item');
+        let next = document.getElementById('next');
+        let prev = document.getElementById('prev');
+        let dots = document.querySelectorAll('.slider .dots li');
+
+        let active = 0;
+
+        function showSlide(index) {
+            sliderList.style.transform = `translateX(-${items[index].offsetLeft}px)`;
+            dots.forEach((dot, i) => {
+                dot.classList.toggle('active', i === index);
+            });
+            active = index;
+        }
+
+        next.onclick = function() {
+            active = (active + 1) % items.length;
+            showSlide(active);
+        }
+
+        prev.onclick = function() {
+            active = (active - 1 + items.length) % items.length;
+            showSlide(active);
+        }
+
+        let refreshInterval = setInterval(() => { next.click(); }, 5000); // Interval set to 5 seconds
+
+        function resetInterval() {
+            clearInterval(refreshInterval);
+            refreshInterval = setInterval(() => { next.click(); }, 5000); // Reset interval to 5 seconds
+        }
+
+        dots.forEach((li, key) => {
+            li.addEventListener('click', () => {
+                showSlide(key);
+                resetInterval();
+            });
+        });
+
+        window.onresize = function() {
+            showSlide(active);
+        };
+
+        // Initialize the first slide
+        showSlide(active);
+    </script>
 </body>
 </html>
