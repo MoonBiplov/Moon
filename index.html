@@ -63,14 +63,16 @@
             letter-spacing: 1px;
         }
 
-        header .navigation {
+        /* Navigation */
+        .navigation {
             display: flex;
+            flex-direction: row; /* Horizontal by default */
         }
 
-        header .navigation a {
+        .navigation a {
             color: #00ffff; /* Light blue cyan color */
             font-size: 18px;
-            text-decoration: none;
+            text-decoration: none; /* Remove underline */
             font-weight: 500;
             letter-spacing: 1px;
             padding: 2px 15px;
@@ -78,10 +80,63 @@
             transition: 0.3s;
         }
 
-        header .navigation a:hover {
+        .navigation a:hover {
             background: #fff;
         }
 
+        /* Hamburger Menu */
+        .hamburger {
+            display: none;
+            font-size: 30px;
+            cursor: pointer;
+            color: #00ffff; /* Light blue cyan color */
+            position: absolute;
+            top: 30px;
+            right: 30px;
+            z-index: 2; /* Ensure icon is above other content */
+        }
+
+        .hamburger .bar {
+            display: block;
+            width: 25px;
+            height: 3px;
+            margin: 5px auto;
+            transition: all 0.3s ease-in-out;
+            background-color: #00ffff; /* Light blue cyan color */
+        }
+
+        /* Responsive Menu */
+        .menu {
+            display: none;
+            flex-direction: column; /* Stack links vertically */
+            width: 200px; /* Adjust width as needed */
+            position: absolute;
+            top: 70px; /* Adjusted to fit below the hamburger icon */
+            right: 30px;
+            background: rgba(0, 0, 0, 0.8);
+            border-radius: 10px; /* Curved corners */
+            padding: 10px;
+            text-align: center;
+            z-index: 1; /* Ensure menu is above other content */
+        }
+
+        .menu a {
+            padding: 10px 0;
+            display: block;
+            text-decoration: none; /* Remove underline */
+            color: #00ffff; /* Ensure text color matches the glowing effect */
+        }
+
+        .menu a:hover {
+            background: #fff; /* Background change on hover */
+            color: #00ffff; /* Ensure hover color matches the glowing effect */
+        }
+
+        .menu.active {
+            display: flex;
+        }
+
+        /* Social Media Icons */
         .media-icons {
             position: fixed;
             bottom: 20px;
@@ -110,34 +165,18 @@
             color: #00ffff; /* Change color on hover */
         }
 
-        .content {
-            max-width: 650px;
-            margin: 60px auto;
-        }
-
-        .content .info {
-            text-align: center;
-        }
-
-        .content .info p {
-            color: #00ffff; /* Light blue cyan color */
-            font-size: 16px;
-            font-weight: 500;
-            margin-bottom: 40px;
-        }
-
         /* Responsive CSS */
         @media (max-width: 960px) {
             header {
                 padding: 20px;
             }
 
-            header .navigation {
-                display: none;
+            .navigation {
+                display: none; /* Hide main navigation on small screens */
             }
 
-            .content .info p {
-                font-size: 14px;
+            .hamburger {
+                display: block;
             }
         }
 
@@ -157,8 +196,21 @@
 
     <section>
         <header>
-            <h2><a href="#" class="logo glowing-text">Moon<br></a></h2>
+            <h2>
+                <a href="index.html" class="logo glowing-text">Moon<br></a>
+            </h2>
             <div class="navigation">
+                <a href="index.html" class="glowing-text">Home</a>
+                <a href="about.html" class="glowing-text">About me</a>
+                <a href="pack.html" class="glowing-text">Texturepack</a>
+                <a href="contact.html" class="glowing-text">Contact</a>
+            </div>
+            <div class="hamburger" onclick="toggleMenu()">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+            <div class="menu" id="menu">
                 <a href="index.html" class="glowing-text">Home</a>
                 <a href="about.html" class="glowing-text">About me</a>
                 <a href="pack.html" class="glowing-text">Texturepack</a>
@@ -177,5 +229,11 @@
             <a class="youtube" href="https://www.youtube.com/@moonxd07"><i class="fab fa-youtube"></i></a>
         </div>
     </section>
+    <script>
+        function toggleMenu() {
+            var menu = document.getElementById('menu');
+            menu.classList.toggle('active');
+        }
+    </script>
 </body>
 </html>
