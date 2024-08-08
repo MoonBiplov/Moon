@@ -1,17 +1,19 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
+<html lang="en">
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, maximum-scale=1.0, minimum-scale=1.0">
-    <title>MoonBiplov</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <!-- Include Minecraft-like Font -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Minecraft+Earth:wght@400&display=swap">
     <style>
         /* Global Styles */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Poppins', sans-serif;
+            font-family: 'Minecraft Earth', cursive; /* Apply Minecraft Earth font */
         }
 
         body {
@@ -19,22 +21,9 @@
             overflow: hidden; /* Prevent scrolling */
         }
 
-        /* Video Background */
-        #video-bg {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: cover; /* Ensures the video covers the whole screen */
-            z-index: -1; /* Keep the video behind other content */
-            opacity: 1; /* Fully opaque */
-            filter: none; /* Remove any filter that may cause fogginess */
-        }
-
         section {
             position: relative;
-            z-index: 1; /* Ensure section content is above the video */
+            z-index: 1; /* Ensure section content is above the background */
             text-align: center; /* Center-align the content */
             padding-bottom: 60px; /* Ensure there's space for the icons */
         }
@@ -59,7 +48,7 @@
             font-size: 30px;
             text-decoration: none;
             text-transform: uppercase;
-            font-weight: 800;
+            font-weight: 400; /* Lighter weight */
             letter-spacing: 1px;
         }
 
@@ -73,7 +62,7 @@
             color: #00ffff; /* Light blue cyan color */
             font-size: 18px;
             text-decoration: none; /* Remove underline */
-            font-weight: 500;
+            font-weight: 400; /* Lighter weight */
             letter-spacing: 1px;
             padding: 2px 15px;
             border-radius: 20px;
@@ -185,15 +174,27 @@
                 font-size: 12px;
             }
         }
+
+        /* Vanta.js container */
+        #vanta-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+        }
+
+        /* Lottie animation container */
+        #lottie-animation {
+            width: 400px;
+            height: 400px;
+            margin: 0 auto;
+        }
     </style>
 </head>
 <body>
-    <!-- Video background -->
-    <video id="video-bg" autoplay muted loop>
-        <source src="00.mp4" type="video/mp4">
-        Your browser does not support the video tag.
-    </video>
-
+    <div id="vanta-bg"></div>
     <section>
         <header>
             <h2>
@@ -219,9 +220,8 @@
         </header>
         <div class="content">
             <div class="info">
-                <p class="glowing-text">
-                    
-                </p>
+                <!-- Lottie Animation -->
+                <div id="lottie-animation"></div>
             </div>
         </div>
         <div class="media-icons">
@@ -229,11 +229,33 @@
             <a class="youtube" href="https://www.youtube.com/@moonxd07"><i class="fab fa-youtube"></i></a>
         </div>
     </section>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vanta/0.5.21/vanta.clouds.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bodymovin/5.7.4/lottie.min.js"></script>
     <script>
         function toggleMenu() {
             var menu = document.getElementById('menu');
             menu.classList.toggle('active');
         }
+
+        VANTA.CLOUDS({
+            el: "#vanta-bg",
+            skyColor: 0x5eb7d9,
+            cloudColor: 0xb1c2dc,
+            cloudShadowColor: 0x1b3a57,
+            sunColor: 0xff9c21,
+            sunGlareColor: 0xfa6331,
+            sunlightColor: 0xfa9531
+        });
+
+        // Initialize Lottie animation
+        var animation = lottie.loadAnimation({
+            container: document.getElementById('lottie-animation'), // ID of the Lottie container
+            renderer: 'svg',
+            loop: true,
+            autoplay: true, 
+            path: 'path/to/your/lottie/file.json' // Path to your Lottie animation file
+        });
     </script>
 </body>
 </html>
