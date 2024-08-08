@@ -7,14 +7,14 @@
     <link rel="stylesheet" href="style.css">
     <title>About Me</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800;900&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Minecraft+Earth:wght@400&display=swap');
 
         /* Global Styles */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Poppins', sans-serif;
+            font-family: 'Minecraft Earth', cursive; /* Apply Minecraft Earth font */
         }
 
         body {
@@ -22,17 +22,7 @@
             padding: 0;
             overflow-x: hidden; /* Prevent horizontal scroll */
             background-color: black; /* Fallback for video */
-        }
-
-        /* Video Background */
-        #background-video {
-            position: fixed;
-            right: 0;
-            bottom: 0;
-            min-width: 100%;
-            min-height: 100%;
-            z-index: -1;
-            opacity: 0.7; /* Adjust opacity to make content more readable */
+            position: relative; /* Necessary for absolute positioning of VANTA effect */
         }
 
         /* Section Styles */
@@ -55,6 +45,7 @@
             justify-content: space-between;
             align-items: center;
             position: relative;
+            z-index: 2; /* Ensure header is above VANTA effect */
         }
 
         header .logo {
@@ -62,7 +53,7 @@
             font-size: 30px;
             text-decoration: none;
             text-transform: uppercase;
-            font-weight: 800;
+            font-weight: 400; /* Lighter weight */
             letter-spacing: 1px;
             text-shadow: 0 0 5px #0ff, 0 0 10px #0ff, 0 0 15px #0ff, 0 0 20px #0ff, 0 0 25px #0ff;
         }
@@ -75,7 +66,7 @@
             color: #0ff;
             font-size: 18px;
             text-decoration: none;
-            font-weight: 500;
+            font-weight: 400; /* Lighter weight */
             letter-spacing: 1px;
             padding: 2px 15px;
             border-radius: 20px;
@@ -91,6 +82,56 @@
             background: #fff;
         }
 
+        /* Hamburger Menu */
+        .hamburger {
+            display: none;
+            font-size: 30px;
+            cursor: pointer;
+            color: #0ff; /* Light blue cyan color */
+            position: relative;
+            z-index: 2; /* Ensure icon is above other content */
+        }
+
+        .hamburger .bar {
+            display: block;
+            width: 25px;
+            height: 3px;
+            margin: 5px auto;
+            transition: all 0.3s ease-in-out;
+            background-color: #0ff; /* Light blue cyan color */
+        }
+
+        /* Responsive Menu */
+        .menu {
+            display: none;
+            flex-direction: column; /* Stack links vertically */
+            width: 200px; /* Adjust width as needed */
+            position: absolute;
+            top: 70px; /* Adjusted to fit below the hamburger icon */
+            right: 30px;
+            background: rgba(0, 0, 0, 0.8);
+            border-radius: 10px; /* Curved corners */
+            padding: 10px;
+            text-align: center;
+            z-index: 1; /* Ensure menu is above other content */
+        }
+
+        .menu a {
+            padding: 10px 0;
+            display: block;
+            text-decoration: none; /* Remove underline */
+            color: #0ff; /* Ensure text color matches the glowing effect */
+        }
+
+        .menu a:hover {
+            background: #fff; /* Background change on hover */
+            color: #0ff; /* Ensure hover color matches the glowing effect */
+        }
+
+        .menu.active {
+            display: flex;
+        }
+
         /* Box Styles */
         .box {
             width: 450px;
@@ -102,6 +143,8 @@
             color: white;
             border-radius: 15px;
             box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+            position: relative;
+            z-index: 2; /* Ensure box is above VANTA effect */
         }
 
         .box h1, .box h3 {
@@ -122,7 +165,7 @@
         .box p {
             font-size: 16px;
             line-height: 1.6;
-            font-weight: 500;
+            font-weight: 400; /* Lighter weight */
         }
 
         .profile-img {
@@ -182,49 +225,11 @@
             }
 
             header .navigation {
-                display: none;
+                display: none; /* Hide main navigation on small screens */
             }
 
-            label {
+            .hamburger {
                 display: block;
-                font-size: 25px;
-                cursor: pointer;
-                transition: 0.3s;
-            }
-
-            label:hover {
-                color: #fff;
-            }
-
-            #check:checked ~ header .navigation {
-                z-index: 2;
-                position: fixed;
-                top: 0;
-                bottom: 0;
-                left: 0;
-                right: 0;
-                background: rgba(114, 223, 255, 0.9);
-                display: flex;
-                flex-direction: column;
-                justify-content: center;
-                align-items: center;
-            }
-
-            .box {
-                width: 90%;
-                padding: 20px;
-                margin-top: 10%;
-            }
-
-            .profile-img {
-                width: 150px;
-                height: 150px;
-            }
-
-            .social-icons a {
-                width: 40px;
-                height: 40px;
-                font-size: 20px;
             }
         }
 
@@ -247,13 +252,12 @@
             }
         }
     </style>
+    <!-- VANTA.js and Three.js scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://assets.website-files.com/5d932bf11608325eac058a21/5d932d68160832c7c0059c91_three.r92.min.txt"></script>
+    <script src="https://assets.website-files.com/5d932bf11608325eac058a21/5d93301de2a4d93ad0b1fe54_vanta.clouds.min.txt"></script>
 </head>
 <body>
-    <video autoplay muted loop id="background-video">
-        <source src="00.mp4" type="video/mp4">
-        Your browser does not support HTML5 video.
-    </video>
-
     <section>
         <header>
             <a href="index.html" class="logo glowing-text">Moon<br></a>
@@ -263,10 +267,17 @@
                 <a href="pack.html">Texturepack</a>
                 <a href="contact.html">Contact</a>
             </div>
-            <label for="check">
-                <i class="fas fa-bars menu-btn"></i>
-                <i class="fas fa-times close-btn"></i>
-            </label>
+            <div class="hamburger" onclick="toggleMenu()">
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+            </div>
+            <div class="menu" id="menu">
+                <a href="index.html">Home</a>
+                <a href="about.html">About me</a>
+                <a href="pack.html">Texturepack</a>
+                <a href="contact.html">Contact</a>
+            </div>
         </header>
 
         <div class="content">
@@ -300,22 +311,31 @@
 
     <!-- JavaScript for Image Rotation -->
     <script>
-        const profileImages = document.querySelectorAll('#profile-img img');
-        let currentIndex = 0;
+        const profileImages = document.querySelectorAll('.profile-img img');
+        let currentImageIndex = 0;
 
-        function changeImage() {
-            const currentImage = profileImages[currentIndex];
-            currentIndex = (currentIndex + 1) % profileImages.length;
-            const nextImage = profileImages[currentIndex];
-
-            nextImage.classList.remove('hidden');
-            nextImage.classList.add('active');
-
-            currentImage.classList.add('hidden');
-            currentImage.classList.remove('active');
+        setInterval(() => {
+            profileImages[currentImageIndex].classList.add('hidden');
+            currentImageIndex = (currentImageIndex + 1) % profileImages.length;
+            profileImages[currentImageIndex].classList.remove('hidden');
+        }, 3000);
+        
+        function toggleMenu() {
+            const menu = document.getElementById('menu');
+            menu.classList.toggle('active');
         }
-
-        setInterval(changeImage, 3000); // Change image every 3 seconds
+    </script>
+    <!-- VANTA.js Initialization -->
+    <script>
+        VANTA.CLOUDS({
+            el: "body",
+            skyColor: 0x5eb7d9,
+            cloudColor: 0xb1c2dc,
+            cloudShadowColor: 0x1b3a57,
+            sunColor: 0xff9c21,
+            sunGlareColor: 0xfa6331,
+            sunlightColor: 0xfa9531
+        });
     </script>
 </body>
 </html>
