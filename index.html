@@ -3,9 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home</title>
+    <title>Free Online Games</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
-    <!-- Include Minecraft-like Font -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Minecraft+Earth:wght@400&display=swap">
     <style>
         /* Global Styles */
@@ -125,8 +124,8 @@
             display: flex;
         }
 
-        /* Social Media Icons */
-        .media-icons {
+        /* Social Media and Game Icons Container */
+        .icons-container {
             position: fixed;
             bottom: 20px;
             left: 50%;
@@ -134,6 +133,12 @@
             display: flex;
             gap: 20px;
             z-index: 1; /* Ensure icons are above other content */
+        }
+
+        /* Social Media Icons */
+        .media-icons {
+            display: flex;
+            gap: 20px;
         }
 
         .media-icons a {
@@ -152,6 +157,73 @@
 
         .media-icons a:hover {
             color: #00ffff; /* Change color on hover */
+        }
+
+        /* Game Icon */
+        .game-icon {
+            font-size: 25px;
+            color: #fff; /* Default color */
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+
+        .game-icon:hover {
+            color: #00ffff; /* Change color on hover */
+        }
+
+        /* Games Slider */
+        .games-slider {
+            position: fixed; /* Fixed position for the slider */
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            border-radius: 10px;
+            display: none;
+            z-index: 2; /* Ensure it's above other content */
+            overflow: hidden;
+        }
+
+        .games-slider .slides {
+            display: flex;
+            width: 100%;
+            height: 100%;
+            transition: transform 0.5s ease-in-out;
+        }
+
+        .games-slider .slide {
+            min-width: 100%;
+            box-sizing: border-box;
+        }
+
+        .games-slider .slide iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        .games-slider .navigation {
+            position: absolute;
+            top: 50%;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            transform: translateY(-50%);
+            z-index: 3; /* Ensure navigation is above slides */
+        }
+
+        .games-slider .navigation button {
+            background: rgba(0, 0, 0, 0.5);
+            color: #fff;
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+            border-radius: 50%;
+        }
+
+        .games-slider .navigation button:hover {
+            background: rgba(0, 0, 0, 0.7);
         }
 
         /* Responsive CSS */
@@ -218,17 +290,22 @@
                 <a href="contact.html" class="glowing-text">Contact</a>
             </div>
         </header>
-        <div class="content">
-            <div class="info">
-                <!-- Lottie Animation -->
-                <div id="lottie-animation"></div>
+
+        <!-- Lottie Animation -->
+        <div id="lottie-animation"></div>
+
+        <!-- Icons Container -->
+        <div class="icons-container">
+            <div class="media-icons">
+                <a class="facebook" href="https://www.facebook.com/moonxd07"><i class="fab fa-facebook"></i></a>
+                <a class="youtube" href="https://www.youtube.com/@moonxd07"><i class="fab fa-youtube"></i></a>
+            </div>
+            <div class="game-icon" onclick="redirectToPoki()">
+                <i class="fas fa-gamepad"></i>
             </div>
         </div>
-        <div class="media-icons">
-            <a class="facebook" href="https://www.facebook.com/biplov.devkota.9"><i class="fab fa-facebook-f"></i></a>
-            <a class="youtube" href="https://www.youtube.com/@moonxd07"><i class="fab fa-youtube"></i></a>
-        </div>
     </section>
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/vanta/0.5.21/vanta.clouds.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bodymovin/5.7.4/lottie.min.js"></script>
@@ -236,6 +313,10 @@
         function toggleMenu() {
             var menu = document.getElementById('menu');
             menu.classList.toggle('active');
+        }
+
+        function redirectToPoki() {
+            window.location.href = 'https://poki.com/en/online';
         }
 
         VANTA.CLOUDS({
@@ -250,11 +331,11 @@
 
         // Initialize Lottie animation
         var animation = lottie.loadAnimation({
-            container: document.getElementById('lottie-animation'), // ID of the Lottie container
+            container: document.getElementById('lottie-animation'),
             renderer: 'svg',
             loop: true,
-            autoplay: true, 
-            path: 'path/to/your/lottie/file.json' // Path to your Lottie animation file
+            autoplay: true,
+            path: 'path/to/your/lottie/file.json'
         });
     </script>
 </body>
