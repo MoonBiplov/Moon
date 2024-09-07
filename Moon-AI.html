@@ -14,29 +14,29 @@
             height: 100vh;
             margin: 0;
             overflow: hidden;
-            background: #1a1a1a; /* Darker background for better contrast */
+            background: #1a1a1a;
         }
         #chatbox {
             width: 100%;
-            max-width: 700px; /* Increased max width */
-            height: 80vh; /* Increased height */
+            max-width: 700px;
+            height: 80vh;
             padding: 20px;
-            background-color: rgba(31, 31, 31, 0.9); /* Slightly transparent dark background */
+            background-color: rgba(31, 31, 31, 0.9);
             border-radius: 10px;
             box-shadow: 0 0 15px rgba(0, 255, 255, 0.5);
             display: flex;
             flex-direction: column;
-            position: relative; /* Ensures that the VANTA effect does not overlap */
+            position: relative;
             z-index: 1;
         }
         #chatlog {
             flex: 1;
             overflow-y: auto;
-            border: 1px solid rgba(0, 255, 255, 0.3); /* Transparent border */
+            border: 1px solid rgba(0, 255, 255, 0.3);
             border-radius: 5px;
-            padding: 20px; /* Increased padding */
-            margin-bottom: 15px; /* Increased margin */
-            background: rgba(255, 255, 255, 0.1); /* Transparent background */
+            padding: 20px;
+            margin-bottom: 15px;
+            background: rgba(255, 255, 255, 0.1);
             word-wrap: break-word;
             display: flex;
             flex-direction: column;
@@ -47,14 +47,14 @@
             border: none;
         }
         .avatar {
-            width: 100px; /* Adjust size as needed */
-            height: 100px; /* Adjust size as needed */
-            border-radius: 50%; /* Makes the image circular */
-            border: 5px solid rgba(0, 255, 255, 0.5); /* Semi-transparent border */
-            margin: 10px auto; /* Center the image */
-            display: block; /* Ensure it is centered */
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            border: 5px solid rgba(0, 255, 255, 0.5);
+            margin: 10px auto;
+            display: block;
             position: relative;
-            animation: borderPulse 2s infinite; /* Apply animation */
+            animation: borderPulse 2s infinite;
         }
         @keyframes borderPulse {
             0% {
@@ -63,31 +63,46 @@
             }
             50% {
                 border-color: rgba(0, 255, 255, 1);
-                transform: scale(1.05); /* Slightly increase size */
+                transform: scale(1.05);
             }
             100% {
                 border-color: rgba(0, 255, 255, 0.5);
                 transform: scale(1);
             }
         }
+        /* Back Button Styling */
+        .back-button {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            padding: 10px 20px;
+            background-color: rgba(0, 255, 255, 0.3);
+            color: #00FFFF;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        .back-button:hover {
+            background-color: rgba(0, 255, 255, 0.5);
+        }
     </style>
 </head>
 <body>
 
 <div id="chatbox">
-    <img src="moon.jpg" alt="Moon Avatar" class="avatar"> <!-- Added circular image -->
+    <button class="back-button" onclick="window.location.href='index.html'">← Back to Home</button>
+    <img src="moon.jpg" alt="Moon Avatar" class="avatar">
     <div id="chatlog">
-        <!-- Iframe to display the link content inside the square -->
         <iframe src="https://www.blackbox.ai/agent/MoonMbKGFko" title="Moon"></iframe>
     </div>
 </div>
 
-<!-- Include Three.js and VANTA.js libraries -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/vanta/dist/vanta.net.min.js"></script>
 
 <script>
-    // Initialize VANTA.js background effect
     VANTA.NET({
         el: 'body',
         mouseControls: true,
@@ -98,7 +113,7 @@
         scale: 1.00,
         scaleMobile: 1.00,
         color: 0x00ffff,
-        backgroundColor: 0x1a1a1a, /* Match background color with body */
+        backgroundColor: 0x1a1a1a,
     });
 </script>
 
