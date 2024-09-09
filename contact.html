@@ -36,90 +36,36 @@
                          0 0 15px rgba(0, 255, 255, 0.5);
         }
 
-        header {
-            padding: 30px 100px;
+        /* Vertical Navigation */
+        .vertical-nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 50px; /* Moderate width */
+            height: 100%;
+            background: transparent; /* Set background to transparent */
             display: flex;
-            justify-content: space-between;
-            align-items: center;
-            position: relative;
-        }
-
-        .logo {
-            font-size: 30px;
-            text-decoration: none;
-            text-transform: uppercase;
-            font-weight: 400;
-            letter-spacing: 1px;
-        }
-
-        .navigation {
-            display: flex;
-            flex-direction: row;
-        }
-
-        .navigation a {
-            color: #00ffff;
-            font-size: 18px;
-            text-decoration: none;
-            font-weight: 400;
-            letter-spacing: 1px;
-            padding: 2px 15px;
-            border-radius: 20px;
-            transition: 0.3s;
-        }
-
-        .navigation a:hover {
-            background: #fff;
-        }
-
-        .hamburger {
-            display: none;
-            font-size: 30px;
-            cursor: pointer;
-            color: #00ffff;
-            position: absolute;
-            top: 30px;
-            right: 30px;
-            z-index: 2;
-        }
-
-        .hamburger .bar {
-            display: block;
-            width: 25px;
-            height: 3px;
-            margin: 5px auto;
-            transition: all 0.3s ease-in-out;
-            background-color: #00ffff;
-        }
-
-        .menu {
-            display: none;
             flex-direction: column;
-            width: 200px;
-            position: absolute;
-            top: 70px;
-            right: 30px;
-            background: rgba(0, 0, 0, 0.8);
-            border-radius: 10px;
-            padding: 10px;
-            text-align: center;
-            z-index: 1;
+            align-items: center;
+            justify-content: center;
+            box-shadow: none; /* Remove box-shadow if not needed */
+            z-index: 2; /* Ensure it is above other content */
         }
 
-        .menu a {
-            padding: 10px 0;
-            display: block;
+        .vertical-nav a {
+            color: #00ffff;
+            font-size: 20px; /* Moderate font size */
             text-decoration: none;
-            color: #00ffff;
+            margin: 12px 0; /* Moderate margin */
+            transition: color 0.3s;
         }
 
-        .menu a:hover {
-            background: #fff;
-            color: #00ffff;
+        .vertical-nav a:hover {
+            color: #fff;
         }
 
-        .menu.active {
-            display: flex;
+        .vertical-nav i {
+            font-size: 20px; /* Moderate icon size */
         }
 
         /* Box Styles */
@@ -215,68 +161,39 @@
             background: #0C4F60;
         }
 
-        /* Social Icons Styles */
         .social-icons {
-            margin-top: 20px;
+            margin: 20px 0;
         }
 
         .social-icons a {
-            display: inline-block;
-            width: 50px;
-            height: 50px;
-            line-height: 50px;
-            font-size: 24px;
-            color: white;
-            background-color: rgba(255, 255, 255, 0.3);
-            border-radius: 50%;
+            color: #00ffff;
+            font-size: 30px;
             margin: 0 10px;
-            transition: all 0.3s ease;
-            text-align: center;
+            transition: color 0.3s;
         }
 
         .social-icons a:hover {
-            background-color: rgba(255, 255, 255, 0.5);
-            transform: scale(1.1);
+            color: #fff;
         }
 
-        /* New Button Style */
         .email-button {
             display: inline-block;
-            padding: 10px 20px;
-            color: white;
-            background-color: #007bff;
-            border: none;
-            border-radius: 5px;
+            color: #00ffff;
             font-size: 16px;
+            background: rgba(0, 0, 0, 0.8);
+            padding: 10px 20px;
             text-decoration: none;
-            text-align: center;
-            cursor: pointer;
-            transition: background-color 0.3s;
-            margin-top: 20px;
+            border-radius: 25px;
+            transition: background 0.3s, color 0.3s;
         }
 
         .email-button:hover {
-            background-color: #0056b3;
+            background: #00ffff;
+            color: #000;
         }
 
-        /* Responsive CSS */
-        @media (max-width: 960px) {
-            header {
-                padding: 20px;
-            }
-
-            .navigation {
-                display: none;
-            }
-
-            .hamburger {
-                display: block;
-            }
-
-            .menu.active ~ header {
-                opacity: 0.5;
-            }
-
+        /* Responsive Design */
+        @media (max-width: 768px) {
             .profile-img {
                 width: 150px;
                 height: 150px;
@@ -285,6 +202,10 @@
             .box {
                 width: 90%;
                 padding: 20px;
+            }
+
+            .vertical-nav {
+                display: none;
             }
         }
 
@@ -312,29 +233,15 @@
 </head>
 <body>
     <!-- Vanta.js Background -->
-    <div id="vanta-bg"></div>
+    <div id="vanta-bg">🐼</div>
 
-    <!-- Header -->
-    <header>
-        <a href="index.html" class="logo glowing-text">Moon<br></a>
-        <div class="navigation">
-            <a href="index.html" class="glowing-text">Home</a>
-            <a href="about.html" class="glowing-text">About me</a>
-            <a href="pack.html" class="glowing-text">Texturepack</a>
-            <a href="contact.html" class="glowing-text">Contact</a>
-        </div>
-        <div class="hamburger" onclick="toggleMenu()">
-            <span class="bar"></span>
-            <span class="bar"></span>
-            <span class="bar"></span>
-        </div>
-        <div class="menu" id="menu">
-            <a href="index.html" class="glowing-text">Home</a>
-            <a href="about.html" class="glowing-text">About me</a>
-            <a href="pack.html" class="glowing-text">Texturepack</a>
-            <a href="contact.html" class="glowing-text">Contact</a>
-        </div>
-    </header>
+    <!-- Vertical Navigation Bar -->
+    <div class="vertical-nav">
+        <a href="index.html" title="Home"><i class="fa fa-home"></i></a>
+        <a href="about.html" title="About"><i class="fa fa-user"></i></a>
+        <a href="pack.html" title="Texturepack"><i class="fa fa-box"></i></a>
+        <a href="contact.html" title="Contact"><i class="fa fa-envelope"></i></a>
+    </div>
 
     <!-- Main Content -->
     <section>
@@ -348,8 +255,8 @@
                     </div>
                     <h4>Add a suggestion for "MoonBiplov"</h4>
                     <div class="social-icons">
-                        <a href="https://www.facebook.com/photo/?fbid=1010110420816324&set=a.101677468326295"><i class="fab fa-facebook-f"></i></a>
-                        <a href="https://www.youtube.com/@moonxd07"><i class="fab fa-youtube"></i></a>
+                        <a href="https://www.facebook.com/photo/?fbid=1010110420816324&set=a.101677468326295" target="_blank" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://www.youtube.com/@moonxd07" target="_blank" title="YouTube"><i class="fab fa-youtube"></i></a>
                     </div>
                     <a href="https://mail.google.com/mail/?view=cm&fs=1&to=biplovdevkota206848@gmail.com" target="_blank" class="email-button">
                         <i class="fa-solid fa-message"></i>
@@ -365,11 +272,6 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/vanta/0.5.21/vanta.clouds.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bodymovin/5.7.4/lottie.min.js"></script>
     <script>
-        function toggleMenu() {
-            var menu = document.getElementById('menu');
-            menu.classList.toggle('active');
-        }
-
         VANTA.CLOUDS({
             el: "#vanta-bg",
             skyColor: 0x5eb7d9,
