@@ -28,250 +28,97 @@
         /* Section Styles */
         section {
             position: relative;
-            width: 100%;
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: flex-start;
-            align-items: center;
-            color: white;
+            z-index: 1; /* Ensure section content is above the background */
+            text-align: center; /* Center-align the content */
+            padding-bottom: 60px; /* Ensure there's space for the icons */
+            transition: opacity 0.5s ease-in-out;
         }
 
-        /* Header Styles */
+        /* Glowing text effect */
+        .glowing-text {
+            color: #00ffff; /* Cyan color for 'Moon' */
+            text-shadow: 0 0 5px rgba(0, 255, 255, 0.5), 
+                         0 0 10px rgba(0, 255, 255, 0.5), 
+                         0 0 15px rgba(0, 255, 255, 0.5); /* Subtle cyan glow effect */
+        }
+
         header {
-            width: 100%;
             padding: 30px 100px;
             display: flex;
             justify-content: space-between;
             align-items: center;
             position: relative;
-            z-index: 2;
         }
 
         header .logo {
-            color: #0ff;
             font-size: 30px;
             text-decoration: none;
             text-transform: uppercase;
-            font-weight: 400;
+            font-weight: 400; /* Lighter weight */
             letter-spacing: 1px;
-            text-shadow: 0 0 5px #0ff, 0 0 10px #0ff, 0 0 15px #0ff, 0 0 20px #0ff, 0 0 25px #0ff;
         }
 
-        header .navigation {
-            display: flex;
-        }
-
-        header .navigation a {
-            color: #0ff;
-            font-size: 18px;
-            text-decoration: none;
-            font-weight: 400;
-            letter-spacing: 1px;
-            padding: 2px 15px;
-            border-radius: 20px;
-            transition: 0.3s;
-            text-shadow: 0 0 5px #0ff, 0 0 10px #0ff, 0 0 15px #0ff, 0 0 20px #0ff, 0 0 25px #0ff;
-        }
-
-        header .navigation a:not(:last-child) {
-            margin-right: 30px;
-        }
-
-        header .navigation a:hover {
-            background: #fff;
-        }
-
-        /* Hamburger Menu */
-        .hamburger {
-            display: none;
-            font-size: 30px;
-            cursor: pointer;
-            color: #0ff;
-            position: relative;
-            z-index: 2;
-        }
-
-        .hamburger .bar {
-            display: block;
-            width: 25px;
-            height: 3px;
-            margin: 5px auto;
-            transition: all 0.3s ease-in-out;
-            background-color: #0ff;
-        }
-
-        /* Responsive Menu */
-        .menu {
-            display: none;
-            flex-direction: column;
-            width: 200px;
-            position: absolute;
-            top: 70px;
-            right: 30px;
-            background: rgba(0, 0, 0, 0.8);
-            border-radius: 10px;
-            padding: 10px;
-            text-align: center;
-            z-index: 1;
-        }
-
-        .menu a {
-            padding: 10px 0;
-            display: block;
-            text-decoration: none;
-            color: #0ff;
-        }
-
-        .menu a:hover {
-            background: #fff;
-            color: #0ff;
-        }
-
-        .menu.active {
-            display: flex;
-        }
-
-        /* Box Styles */
-        .box {
-            width: 450px;
-            background: rgba(0, 0, 0, 0.4);
-            padding: 40px;
-            text-align: center;
-            margin: auto;
-            margin-top: 5%;
-            color: white;
-            border-radius: 15px;
-            box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
-            position: relative;
-            z-index: 2;
-        }
-
-        .box h1, .box h3 {
-            color: #0ff;
-            text-shadow: 0 0 5px #0ff, 0 0 10px #0ff, 0 0 15px #0ff, 0 0 20px #0ff, 0 0 25px #0ff;
-        }
-
-        .box h1 {
-            font-size: 36px;
-            margin-bottom: 10px;
-        }
-
-        .box h3 {
-            font-size: 24px;
-            margin-bottom: 20px;
-        }
-
-        .box p {
-            font-size: 16px;
-            line-height: 1.6;
-            font-weight: 400;
-        }
-
-        .profile-img {
-            width: 200px;
-            height: 200px;
-            border-radius: 50%;
-            overflow: hidden;
-            margin: 0 auto 20px;
-            border: 6px solid rgba(255, 255, 255, 0.5);
-            position: relative;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            cursor: pointer;
-        }
-
-        .profile-img img {
-            width: 100%;
-            height: 100%;
-            position: absolute;
-            object-fit: cover;
-            opacity: 1;
-            transition: opacity 1s ease-in-out, transform 1s ease-in-out;
-        }
-
-        .profile-img img.hidden {
-            opacity: 0;
-            transform: scale(1.1);
-        }
-
-        .social-icons {
-            margin-top: 20px;
-        }
-
-        .social-icons a {
-            display: inline-block;
-            width: 50px;
-            height: 50px;
-            line-height: 50px;
-            font-size: 24px;
-            color: white;
-            background-color: rgba(255, 255, 255, 0.3);
-            border-radius: 50%;
-            margin: 0 10px;
-            transition: all 0.3s ease;
-            text-align: center;
-        }
-
-        .social-icons a:hover {
-            background-color: rgba(255, 255, 255, 0.5);
-            transform: scale(1.1);
-        }
-
-        /* Modal Styles */
-        .modal {
-            display: none;
+        /* Vertical Navigation */
+        .vertical-nav {
             position: fixed;
             top: 0;
             left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.8);
+            width: 60px;
+            height: 100vh;
+            background-color: transparent; /* Remove the background color */
+            display: flex;
+            flex-direction: column;
             justify-content: center;
             align-items: center;
-            z-index: 3;
+            z-index: 2; /* Ensure nav is above other content */
         }
 
-        .modal img {
-            max-width: 80%;
-            max-height: 80%;
-            border: 2px solid #0ff;
+        .vertical-nav a {
+            color: #00ffff;
+            text-decoration: none;
+            margin: 20px 0;
+            font-size: 18px; /* Make icons smaller */
+            transition: 0.3s;
         }
 
-        .modal.active {
-            display: flex;
-        }
-
-        .modal .close {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            font-size: 40px;
+        .vertical-nav a:hover {
             color: #fff;
-            cursor: pointer;
+            transform: scale(1.2);
         }
 
-        .modal .nav-buttons {
-            position: absolute;
-            top: 50%;
-            width: 100%;
+        /* Social Media and Game Icons Container */
+        .icons-container {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
             display: flex;
-            justify-content: space-between;
-            transform: translateY(-50%);
+            gap: 20px;
+            z-index: 1; /* Ensure icons are above other content */
         }
 
-        .modal .nav-buttons button {
-            background: rgba(0, 0, 0, 0.5);
-            border: none;
-            color: white;
-            font-size: 24px;
-            padding: 10px;
-            cursor: pointer;
+        /* Social Media Icons */
+        .media-icons {
+            display: flex;
+            gap: 20px;
         }
 
-        .modal .nav-buttons button:hover {
-            background: rgba(0, 0, 0, 0.8);
+        .media-icons a {
+            font-size: 20px; /* Adjust size of social media icons */
+            color: #fff; /* Default color for icons */
+            transition: color 0.3s; /* Smooth color transition */
+        }
+
+        .media-icons a.facebook {
+            color: #3b5998; /* Facebook blue */    
+        }
+
+        .media-icons a.youtube {
+            color: #ff0000; /* YouTube red */
+        }
+
+        .media-icons a:hover {
+            color: #00ffff; /* Change color on hover */
         }
 
         /* Responsive CSS */
@@ -279,33 +126,22 @@
             header {
                 padding: 20px;
             }
-
-            header .navigation {
-                display: none;
-            }
-
-            .hamburger {
-                display: block;
-            }
         }
 
         @media (max-width: 560px) {
-            .box {
-                width: 90%;
-                padding: 20px;
-                margin-top: 10%;
+            .content .info p {
+                font-size: 12px;
             }
+        }
 
-            .profile-img {
-                width: 150px;
-                height: 150px;
-            }
-
-            .social-icons a {
-                width: 40px;
-                height: 40px;
-                font-size: 20px;
-            }
+        /* Vanta.js container */
+        #vanta-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
         }
     </style>
     <!-- VANTA.js and Three.js scripts -->
@@ -314,35 +150,30 @@
     <script src="https://assets.website-files.com/5d932bf11608325eac058a21/5d93301de2a4d93ad0b1fe54_vanta.clouds.min.txt"></script>
 </head>
 <body>
+    <div id="vanta-bg"></div>
+
+    <!-- Vertical Navigation Bar -->
+    <div class="vertical-nav">
+        <a href="index.html"><i class="fa fa-home"></i></a>
+        <a href="about.html"><i class="fa fa-user"></i></a>
+        <a href="pack.html"><i class="fa fa-box"></i></a>
+        <a href="contact.html"><i class="fa fa-envelope"></i></a>
+    </div>
+
     <section>
         <header>
-            <a href="index.html" class="logo glowing-text">Moon<br></a>
-            <div class="navigation">
-                <a href="index.html">Home</a>
-                <a href="about.html">About me</a>
-                <a href="pack.html">Texturepack</a>
-                <a href="contact.html">Contact</a>
-            </div>
-            <div class="hamburger" onclick="toggleMenu()">
-                <div class="bar"></div>
-                <div class="bar"></div>
-                <div class="bar"></div>
-            </div>
-            <div class="menu" id="menu">
-                <a href="index.html">Home</a>
-                <a href="about.html">About me</a>
-                <a href="pack.html">Texturepack</a>
-                <a href="contact.html">Contact</a>
-            </div>
+            <h2>
+                <a href="index.html" class="logo glowing-text">🐼<br></a>
+            </h2>
         </header>
 
         <div class="content">
             <div class="info">
                 <div class="box">
                     <div class="profile-img" id="profile-img">
-                        <img src="moon1.jpg" alt="Profile Picture" onclick="showImage('moon1.jpg')">
-                        <img src="moon2.jpg" alt="Profile Picture" onclick="showImage('moon2.jpg')" class="hidden">
-                        <img src="moon3.jpg" alt="Profile Picture" onclick="showImage('moon3.jpg')" class="hidden">
+                        <img src="moon1.jpg" alt="Profile Picture">
+                        <img src="moon2.jpg" alt="Profile Picture" class="hidden">
+                        <img src="moon3.jpg" alt="Profile Picture" class="hidden">
                     </div>
                     <h1>MoonBiplov</h1>
                     <h3>Student</h3>
@@ -364,42 +195,12 @@
                 </div>
             </div>
         </div>
-
-        <!-- Modal for Image Viewing -->
-        <div class="modal" id="modal">
-            <span class="close" onclick="closeModal()">&times;</span>
-            <img id="modal-img" src="" alt="Modal Image">
-            <div class="nav-buttons">
-                <button onclick="prevImage()">&lt;</button>
-                <button onclick="nextImage()">&gt;</button>
-            </div>
-        </div>
     </section>
 
-    <!-- JavaScript for Image Switching and Modal -->
+    <!-- JavaScript for Image Rotation -->
     <script>
         const profileImages = document.querySelectorAll('.profile-img img');
         let currentImageIndex = 0;
-
-        function showImage(src) {
-            const modal = document.getElementById('modal');
-            const modalImg = document.getElementById('modal-img');
-            modalImg.src = src;
-            modal.classList.add('active');
-        }
-
-        function closeModal() {
-            const modal = document.getElementById('modal');
-            modal.classList.remove('active');
-        }
-
-        // Close modal when clicking outside the image
-        window.onclick = function(event) {
-            const modal = document.getElementById('modal');
-            if (event.target === modal) {
-                closeModal();
-            }
-        };
 
         function rotateImages() {
             profileImages.forEach((img, index) => {
@@ -408,36 +209,23 @@
             currentImageIndex = (currentImageIndex + 1) % profileImages.length;
         }
 
-        // Start image rotation
         setInterval(rotateImages, 3000);
 
-        // Modal navigation functions
-        function prevImage() {
-            currentImageIndex = (currentImageIndex - 1 + profileImages.length) % profileImages.length;
-            showImage(profileImages[currentImageIndex].src);
-        }
-
-        function nextImage() {
-            currentImageIndex = (currentImageIndex + 1) % profileImages.length;
-            showImage(profileImages[currentImageIndex].src);
-        }
-
-        // Toggle menu visibility
-        function toggleMenu() {
-            const menu = document.getElementById('menu');
-            menu.classList.toggle('active');
-        }
-    </script>
-    <!-- VANTA.js Initialization -->
-    <script>
+        // Initialize Vanta.js
         VANTA.CLOUDS({
-            el: "body",
-            skyColor: 0x5eb7d9,
-            cloudColor: 0xb1c2dc,
-            cloudShadowColor: 0x1b3a57,
-            sunColor: 0xff9c21,
-            sunGlareColor: 0xfa6331,
-            sunlightColor: 0xfa9531
+            el: "#vanta-bg",
+            mouseControls: true,
+            touchControls: true,
+            gyroControls: false,
+            minHeight: 200.00,
+            minWidth: 200.00,
+            skyColor: 0x001ff,
+            cloudShadowColor: 0x2808b,
+            cloudColor: 0xf4e7d9,
+            sunColor: 0xffff00,
+            sunGlareColor: 0xeeee00,
+            sunlightColor: 0xf9e79f,
+            speed: 1.2
         });
     </script>
 </body>
