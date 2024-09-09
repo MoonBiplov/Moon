@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Moon - AI Chatbot</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
     <style>
         body {
             font-family: 'Poppins', sans-serif;
@@ -16,6 +17,8 @@
             overflow: hidden;
             background: #1a1a1a;
         }
+
+        /* Chatbox Styles */
         #chatbox {
             width: 100%;
             max-width: 700px;
@@ -29,6 +32,7 @@
             position: relative;
             z-index: 1;
         }
+
         #chatlog {
             flex: 1;
             overflow-y: auto;
@@ -41,11 +45,13 @@
             display: flex;
             flex-direction: column;
         }
+
         iframe {
             width: 100%;
             height: 100%;
             border: none;
         }
+
         .avatar {
             width: 100px;
             height: 100px;
@@ -56,6 +62,7 @@
             position: relative;
             animation: borderPulse 2s infinite;
         }
+
         @keyframes borderPulse {
             0% {
                 border-color: rgba(0, 255, 255, 0.5);
@@ -70,6 +77,7 @@
                 transform: scale(1);
             }
         }
+
         /* Back Button Styling */
         .back-button {
             position: absolute;
@@ -84,38 +92,74 @@
             cursor: pointer;
             transition: background-color 0.3s ease;
         }
+
         .back-button:hover {
             background-color: rgba(0, 255, 255, 0.5);
+        }
+
+        /* Vertical Navigation Bar */
+        .vertical-nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 60px;
+            height: 100vh;
+            background-color: transparent;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 2;
+        }
+
+        .vertical-nav a {
+            color: #00ffff;
+            text-decoration: none;
+            margin: 20px 0;
+            font-size: 18px; /* Adjust icon size */
+            transition: 0.3s;
+        }
+
+        .vertical-nav a:hover {
+            color: #fff;
+            transform: scale(1.2);
         }
     </style>
 </head>
 <body>
 
-<div id="chatbox">
-    <button class="back-button" onclick="window.location.href='index.html'">← Back to Home</button>
-    <img src="moon.jpg" alt="Moon Avatar" class="avatar">
-    <div id="chatlog">
-        <iframe src="https://www.blackbox.ai/agent/MoonMbKGFko" title="Moon"></iframe>
+    <!-- Vertical Navigation Bar -->
+    <div class="vertical-nav">
+        <a href="index.html"><i class="fa fa-home"></i></a>
+        <a href="about.html"><i class="fa fa-user"></i></a>
+        <a href="pack.html"><i class="fa fa-box"></i></a>
+        <a href="contact.html"><i class="fa fa-envelope"></i></a>
     </div>
-</div>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/vanta/dist/vanta.net.min.js"></script>
+    <div id="chatbox">
+        <button class="back-button" onclick="window.location.href='index.html'">← Back to Home</button>
+        <img src="moon.jpg" alt="Moon Avatar" class="avatar">
+        <div id="chatlog">
+            <iframe src="https://www.blackbox.ai/agent/MoonMbKGFko" title="Moon"></iframe>
+        </div>
+    </div>
 
-<script>
-    VANTA.NET({
-        el: 'body',
-        mouseControls: true,
-        touchControls: true,
-        gyroControls: false,
-        minHeight: 200.00,
-        minWidth: 200.00,
-        scale: 1.00,
-        scaleMobile: 1.00,
-        color: 0x00ffff,
-        backgroundColor: 0x1a1a1a,
-    });
-</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vanta/dist/vanta.net.min.js"></script>
+    <script>
+        VANTA.NET({
+            el: 'body',
+            mouseControls: true,
+            touchControls: true,
+            gyroControls: false,
+            minHeight: 200.00,
+            minWidth: 200.00,
+            scale: 1.00,
+            scaleMobile: 1.00,
+            color: 0x00ffff,
+            backgroundColor: 0x1a1a1a,
+        });
+    </script>
 
 </body>
 </html>
