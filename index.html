@@ -52,77 +52,32 @@
             letter-spacing: 1px;
         }
 
-        /* Navigation */
-        .navigation {
+        /* Vertical Navigation */
+        .vertical-nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 60px;
+            height: 100vh;
+            background-color: transparent; /* Remove the background color */
             display: flex;
-            flex-direction: row; /* Horizontal by default */
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 2; /* Ensure nav is above other content */
         }
 
-        .navigation a {
-            color: #00ffff; /* Light blue cyan color */
-            font-size: 18px;
-            text-decoration: none; /* Remove underline */
-            font-weight: 400; /* Lighter weight */
-            letter-spacing: 1px;
-            padding: 2px 15px;
-            border-radius: 20px;
+        .vertical-nav a {
+            color: #00ffff;
+            text-decoration: none;
+            margin: 20px 0;
+            font-size: 18px; /* Make icons smaller */
             transition: 0.3s;
         }
 
-        .navigation a:hover {
-            background: #fff;
-        }
-
-        /* Hamburger Menu */
-        .hamburger {
-            display: none;
-            font-size: 30px;
-            cursor: pointer;
-            color: #00ffff; /* Light blue cyan color */
-            position: absolute;
-            top: 30px;
-            right: 30px;
-            z-index: 2; /* Ensure icon is above other content */
-        }
-
-        .hamburger .bar {
-            display: block;
-            width: 25px;
-            height: 3px;
-            margin: 5px auto;
-            transition: all 0.3s ease-in-out;
-            background-color: #00ffff; /* Light blue cyan color */
-        }
-
-        /* Responsive Menu */
-        .menu {
-            display: none;
-            flex-direction: column; /* Stack links vertically */
-            width: 200px; /* Adjust width as needed */
-            position: absolute;
-            top: 70px; /* Adjusted to fit below the hamburger icon */
-            right: 30px;
-            background: rgba(0, 0, 0, 0.8);
-            border-radius: 10px; /* Curved corners */
-            padding: 10px;
-            text-align: center;
-            z-index: 1; /* Ensure menu is above other content */
-        }
-
-        .menu a {
-            padding: 10px 0;
-            display: block;
-            text-decoration: none; /* Remove underline */
-            color: #00ffff; /* Ensure text color matches the glowing effect */
-        }
-
-        .menu a:hover {
-            background: #fff; /* Background change on hover */
-            color: #00ffff; /* Ensure hover color matches the glowing effect */
-        }
-
-        .menu.active {
-            display: flex;
+        .vertical-nav a:hover {
+            color: #fff;
+            transform: scale(1.2);
         }
 
         /* Social Media and Game Icons Container */
@@ -143,7 +98,7 @@
         }
 
         .media-icons a {
-            font-size: 25px; /* Adjust size if needed */
+            font-size: 20px; /* Adjust size of social media icons */
             color: #fff; /* Default color for icons */
             transition: color 0.3s; /* Smooth color transition */
         }
@@ -160,87 +115,10 @@
             color: #00ffff; /* Change color on hover */
         }
 
-        /* Game Icon */
-        .game-icon,
-        .ai-icon {
-            font-size: 25px;
-            color: #fff; /* Default color */
-            cursor: pointer;
-            transition: color 0.3s;
-        }
-
-        .game-icon:hover,
-        .ai-icon:hover {
-            color: #00ffff; /* Change color on hover */
-        }
-
-        /* Games Slider */
-        .games-slider {
-            position: fixed; /* Fixed position for the slider */
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.8);
-            border-radius: 10px;
-            display: none;
-            z-index: 2; /* Ensure it's above other content */
-            overflow: hidden;
-        }
-
-        .games-slider .slides {
-            display: flex;
-            width: 100%;
-            height: 100%;
-            transition: transform 0.5s ease-in-out;
-        }
-
-        .games-slider .slide {
-            min-width: 100%;
-            box-sizing: border-box;
-        }
-
-        .games-slider .slide iframe {
-            width: 100%;
-            height: 100%;
-            border: none;
-        }
-
-        .games-slider .navigation {
-            position: absolute;
-            top: 50%;
-            width: 100%;
-            display: flex;
-            justify-content: space-between;
-            transform: translateY(-50%);
-            z-index: 3; /* Ensure navigation is above slides */
-        }
-
-        .games-slider .navigation button {
-            background: rgba(0, 0, 0, 0.5);
-            color: #fff;
-            border: none;
-            padding: 10px;
-            cursor: pointer;
-            border-radius: 50%;
-        }
-
-        .games-slider .navigation button:hover {
-            background: rgba(0, 0, 0, 0.7);
-        }
-
         /* Responsive CSS */
         @media (max-width: 960px) {
             header {
                 padding: 20px;
-            }
-
-            .navigation {
-                display: none; /* Hide main navigation on small screens */
-            }
-
-            .hamburger {
-                display: block;
             }
         }
 
@@ -259,155 +137,41 @@
             height: 100%;
             z-index: 0;
         }
-
-        /* Rotating Circle Animation */
-        #rotating-circle {
-            width: 100px;
-            height: 100px;
-            margin: 0 auto;
-        }
-
-        /* Transition Screen Styles */
-        .transition-screen {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.8);
-            color: #fff;
-            display: none; /* Initially hidden */
-            z-index: 2; /* Ensure it covers other content */
-            overflow: hidden;
-            opacity: 0;
-            transition: opacity 0.5s ease-in-out;
-        }
-
-        .transition-screen.active {
-            display: block;
-            opacity: 1;
-        }
-
-        .transition-screen .content {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            text-align: center;
-        }
-
-        /* AI Screen Styles */
-        .ai-screen {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.8);
-            color: #fff;
-            display: none; /* Initially hidden */
-            z-index: 3; /* Ensure it is above the transition screen */
-        }
-
-        .ai-screen.active {
-            display: block;
-        }
-
-        .ai-screen iframe {
-            width: 100%;
-            height: 100%;
-            border: none;
-        }
     </style>
 </head>
 <body>
     <div id="vanta-bg"></div>
+
+    <!-- Vertical Navigation Bar -->
+    <div class="vertical-nav">
+        <a href="index.html"><i class="fa fa-home"></i></a>
+        <a href="about.html"><i class="fa fa-user"></i></a>
+        <a href="pack.html"><i class="fa fa-box"></i></a>
+        <a href="contact.html"><i class="fa fa-envelope"></i></a>
+    </div>
+
     <section>
         <header>
             <h2>
-                <a href="index.html" class="logo glowing-text">Moon<br></a>
+                <a href="index.html" class="logo glowing-text"><h4>🐼</h4><br></a>
             </h2>
-            <div class="navigation">
-                <a href="index.html" class="glowing-text">Home</a>
-                <a href="about.html" class="glowing-text">About me</a>
-                <a href="pack.html" class="glowing-text">Texturepack</a>
-                <a href="contact.html" class="glowing-text">Contact</a>
-                <h5><a href="Moon-AI.html" class="glowing-text">֎</a>
-            </div>
-            <div class="hamburger" onclick="toggleMenu()">
-                <span class="bar"></span>
-                <span class="bar"></span>
-                <span class="bar"></span>
-            </div>
-            <div class="menu" id="menu">
-                <a href="index.html" class="glowing-text">Home</a>
-                <a href="about.html" class="glowing-text">About me</a>
-                <a href="pack.html" class="glowing-text">Texturepack</a>
-                <a href="contact.html" class="glowing-text">Contact</a>
-                <a href="Moon-AI.html" class="glowing-text">֎</a>
-            </div>
         </header>
 
-        <!-- Lottie Animation -->
-        <div id="lottie-animation"></div>
-
-        <!-- Rotating Circle Animation -->
-        <div id="rotating-circle"></div>
+        <!-- Content Here -->
 
         <!-- Icons Container -->
         <div class="icons-container">
             <div class="media-icons">
                 <a class="facebook" href="https://www.facebook.com/photo/?fbid=1010110420816324&set=a.101677468326295"><i class="fab fa-facebook"></i></a>
                 <a class="youtube" href="https://www.youtube.com/@moonxd07"><i class="fab fa-youtube"></i></a>
+                <a href="Moon-AI.html" class="glowing-text">֎</a>
             </div>
-            
-          
-           
-        </div>
-
-        <!-- Transition Screen -->
-        <div class="transition-screen" id="transition-screen">
-            <div class="content">
-                <p>Loading...</p>
-                <!-- Rotating Circle Animation -->
-                <div id="rotating-circle"></div>
-            </div>
-        </div>
-
-        
         </div>
     </section>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/vanta/0.5.21/vanta.clouds.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/bodymovin/5.7.4/lottie.min.js"></script>
     <script>
-        function toggleMenu() {
-            var menu = document.getElementById('menu');
-            menu.classList.toggle('active');
-        }
-
-        function triggerTransition() {
-            var transitionScreen = document.getElementById('transition-screen');
-            var aiScreen = document.getElementById('ai-screen');
-
-            // Show transition screen
-            transitionScreen.classList.add('active');
-
-            // Initialize Rotating Circle animation
-            // Using simple CSS for rotation
-            document.getElementById('rotating-circle').style.animation = 'rotate 5s linear infinite';
-
-            
-
-            // Hide transition screen after 5 seconds (optional)
-            setTimeout(function() {
-                transitionScreen.classList.remove('active');
-                aiScreen.classList.add('active');
-                document.querySelector('section').style.display = 'none'; // Hide current section
-            }, 5000); // 5 seconds
-        }
-
         VANTA.CLOUDS({
             el: "#vanta-bg",
             skyColor: 0x5eb7d9,
@@ -417,27 +181,6 @@
             sunGlareColor: 0xfa6331,
             sunlightColor: 0xfa9531
         });
-
-        // Initialize Lottie animation for homepage
-        var animation = lottie.loadAnimation({
-            container: document.getElementById('lottie-animation'),
-            renderer: 'svg',
-            loop: true,
-            autoplay: true,
-            path: 'path/to/your/lottie/file.json' // Update this path to your Lottie file
-        });
-
-        // Simple CSS animation for rotating circle
-        document.styleSheets[0].insertRule(`
-            @keyframes rotate {
-                from {
-                    transform: rotate(0deg);
-                }
-                to {
-                    transform: rotate(360deg);
-                }
-            }
-        `, 0);
     </script>
 </body>
 </html>
